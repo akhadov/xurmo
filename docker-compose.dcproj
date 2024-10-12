@@ -4,11 +4,10 @@
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
     <DockerPublishLocally>False</DockerPublishLocally>
-    <ProjectGuid>e0ba77bc-d8d7-47bc-80c4-1a93df3b241f</ProjectGuid>
+    <ProjectGuid>73e759ad-bea4-4b3f-b556-a28e2ae1b550</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>xurmo.api</DockerServiceName>
-	  <DockerComposeProjectName>xurmo</DockerComposeProjectName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

@@ -6,7 +6,7 @@ services:
     container_name: Xurmo.Api
     build:
       context: .
-      dockerfile: src/API/Xurmo.Api/Dockerfile
+      dockerfile: src/Api/Xurmo.Api/Dockerfile
     ports:
       - 5000:8080
       - 5001:8081
@@ -52,3 +52,4 @@ services:
     restart: always
     ports:
       - 6379:6379
+
