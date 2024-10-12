@@ -17,6 +17,8 @@ internal sealed class GetProductQueryHandler(IDbConnectionFactory dbConnectionFa
             $"""
             SELECT
                 id AS {nameof(ProductResponse.Id)},
+                category_id AS {nameof(ProductResponse.CategoryId)},
+                brand_id AS {nameof(ProductResponse.BrandId)},
                 name AS {nameof(ProductResponse.Name)},
                 description AS {nameof(ProductResponse.Description)},
                 image_path AS {nameof(ProductResponse.ImagePath)}

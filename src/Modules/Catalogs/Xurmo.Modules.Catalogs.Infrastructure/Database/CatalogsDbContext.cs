@@ -2,6 +2,8 @@
 using Xurmo.Common.Infrastructure.Inbox;
 using Xurmo.Common.Infrastructure.Outbox;
 using Xurmo.Modules.Catalogs.Application.Abstractions.Data;
+using Xurmo.Modules.Catalogs.Domain.Brands;
+using Xurmo.Modules.Catalogs.Domain.Categories;
 using Xurmo.Modules.Catalogs.Domain.Products;
 using Xurmo.Modules.Catalogs.Infrastructure.Products;
 
@@ -10,6 +12,9 @@ namespace Xurmo.Modules.Catalogs.Infrastructure.Database;
 public sealed class CatalogsDbContext(DbContextOptions<CatalogsDbContext> options) : DbContext(options), IUnitOfWork
 {
     internal DbSet<Product> Products { get; set; }
+    internal DbSet<Category> Categories { get; set; }
+    internal DbSet<Brand> Brands { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

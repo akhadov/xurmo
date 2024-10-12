@@ -15,7 +15,7 @@ internal sealed class CreateProduct : IEndpoint
     {
         app.MapPost("catalogs/products", async ([FromForm] CreateProductRequest request, ISender sender) =>
         {
-            Result<Guid> result = await sender.Send(new CreateProductCommand(request.Name, request.Description, request.Image));
+            Result<Guid> result = await sender.Send(new CreateProductCommand(request.CategoryId, request.BrandId, request.Name, request.Description, request.Image));
 
             return result.Match(Results.Ok, ApiResults.Problem);
         })

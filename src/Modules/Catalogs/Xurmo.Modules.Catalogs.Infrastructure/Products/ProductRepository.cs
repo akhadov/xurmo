@@ -5,6 +5,7 @@ using Xurmo.Modules.Catalogs.Infrastructure.Database;
 namespace Xurmo.Modules.Catalogs.Infrastructure.Products;
 internal sealed class ProductRepository(CatalogsDbContext context) : IProductRepository
 {
+
     public async Task<Product?> GetAsync(Guid id, CancellationToken cancellationToken = default)
     {
         return await context.Products.SingleOrDefaultAsync(p => p.Id == id, cancellationToken);
@@ -13,5 +14,14 @@ internal sealed class ProductRepository(CatalogsDbContext context) : IProductRep
     public void Insert(Product product)
     {
         context.Products.Add(product);
+    }
+
+    public void Update(Product product)
+    {
+        context.Products.Update(product);
+    }
+    public void Delete(Product product)
+    {
+        context.Products.Remove(product);
     }
 }

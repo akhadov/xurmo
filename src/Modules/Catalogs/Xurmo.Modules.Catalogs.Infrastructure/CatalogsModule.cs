@@ -9,7 +9,11 @@ using Xurmo.Common.Application.Messaging;
 using Xurmo.Common.Infrastructure.Outbox;
 using Xurmo.Common.Presentation.Endpoints;
 using Xurmo.Modules.Catalogs.Application.Abstractions.Data;
+using Xurmo.Modules.Catalogs.Domain.Brands;
+using Xurmo.Modules.Catalogs.Domain.Categories;
 using Xurmo.Modules.Catalogs.Domain.Products;
+using Xurmo.Modules.Catalogs.Infrastructure.Brands;
+using Xurmo.Modules.Catalogs.Infrastructure.Categories;
 using Xurmo.Modules.Catalogs.Infrastructure.Database;
 using Xurmo.Modules.Catalogs.Infrastructure.Inbox;
 using Xurmo.Modules.Catalogs.Infrastructure.Outbox;
@@ -52,6 +56,8 @@ public static class CatalogsModule
         services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<CatalogsDbContext>());
 
         services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<IBrandRepository, BrandRepository>();
 
         services.Configure<OutboxOptions>(configuration.GetSection("Catalogs:Outbox"));
 

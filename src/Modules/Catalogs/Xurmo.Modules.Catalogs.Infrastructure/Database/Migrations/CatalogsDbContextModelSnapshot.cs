@@ -129,12 +129,56 @@ namespace Xurmo.Modules.Catalogs.Infrastructure.Database.Migrations
                     b.ToTable("outbox_message_consumers", "catalogs");
                 });
 
+            modelBuilder.Entity("Xurmo.Modules.Catalogs.Domain.Brands.Brand", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("name");
+
+                    b.HasKey("Id")
+                        .HasName("pk_brands");
+
+                    b.ToTable("brands", "catalogs");
+                });
+
+            modelBuilder.Entity("Xurmo.Modules.Catalogs.Domain.Categories.Category", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("name");
+
+                    b.HasKey("Id")
+                        .HasName("pk_categories");
+
+                    b.ToTable("categories", "catalogs");
+                });
+
             modelBuilder.Entity("Xurmo.Modules.Catalogs.Domain.Products.Product", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
                         .HasColumnName("id");
+
+                    b.Property<Guid>("BrandId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("brand_id");
+
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("category_id");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -154,7 +198,30 @@ namespace Xurmo.Modules.Catalogs.Infrastructure.Database.Migrations
                     b.HasKey("Id")
                         .HasName("pk_products");
 
+                    b.HasIndex("BrandId")
+                        .HasDatabaseName("ix_products_brand_id");
+
+                    b.HasIndex("CategoryId")
+                        .HasDatabaseName("ix_products_category_id");
+
                     b.ToTable("products", "catalogs");
+                });
+
+            modelBuilder.Entity("Xurmo.Modules.Catalogs.Domain.Products.Product", b =>
+                {
+                    b.HasOne("Xurmo.Modules.Catalogs.Domain.Brands.Brand", null)
+                        .WithMany()
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_products_brands_brand_id");
+
+                    b.HasOne("Xurmo.Modules.Catalogs.Domain.Categories.Category", null)
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_products_categories_category_id");
                 });
 #pragma warning restore 612, 618
         }
