@@ -5,19 +5,19 @@ using Microsoft.AspNetCore.Routing;
 using Xurmo.Common.Domain;
 using Xurmo.Common.Presentation.Endpoints;
 using Xurmo.Common.Presentation.Results;
-using Xurmo.Modules.Catalogs.Application.Categories.GetCategory;
+using Xurmo.Modules.Catalogs.Application.Brands.GetBrand;
 
-namespace Xurmo.Modules.Catalogs.Presentation.Categories;
-internal sealed class GetCategory : IEndpoint
+namespace Xurmo.Modules.Catalogs.Presentation.Brands;
+internal sealed class GetBrand : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapGet("catalogs/categories/{id}", async (Guid id, ISender sender) =>
+        app.MapGet("catalogs/brands/{id}", async (Guid id, ISender sender) =>
         {
-            Result<CategoryResponse> result = await sender.Send(new GetCategoryQuery(id));
+            Result<BrandResponse> result = await sender.Send(new GetBrandQuery(id));
 
             return result.Match(Results.Ok, ApiResults.Problem);
         })
-        .WithTags(Tags.Categories);
+        .WithTags(Tags.Brands);
     }
 }
