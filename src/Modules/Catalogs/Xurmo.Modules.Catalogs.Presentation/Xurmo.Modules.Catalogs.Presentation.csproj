@@ -1,10 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <PackageReference Include="MassTransit" Version="8.2.3" />
+    <PackageReference Include="MassTransit" Version="8.3.0" />
   </ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\Common\Xurmo.Common.Presentation\Xurmo.Common.Presentation.csproj" />
 		<ProjectReference Include="..\Xurmo.Modules.Catalogs.Application\Xurmo.Modules.Catalogs.Application.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="SonarAnalyzer.CSharp" Version="9.32.0.97167">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
 	</ItemGroup>
 </Project>

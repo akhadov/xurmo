@@ -83,6 +83,6 @@ app.UseAuthorization();
 
 app.MapEndpoints();
 
-app.Run();
+await app.RunAsync();
 
 public partial class Program;

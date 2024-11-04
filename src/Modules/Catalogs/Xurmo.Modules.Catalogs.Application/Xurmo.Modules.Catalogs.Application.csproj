@@ -4,4 +4,10 @@
     <ProjectReference Include="..\Xurmo.Modules.Catalogs.Domain\Xurmo.Modules.Catalogs.Domain.csproj" />
     <ProjectReference Include="..\Xurmo.Modules.Catalogs.IntegrationEvents\Xurmo.Modules.Catalogs.IntegrationEvents.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Update="SonarAnalyzer.CSharp" Version="9.32.0.97167">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
 </Project>

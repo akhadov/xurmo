@@ -5,6 +5,9 @@
     <ProjectReference Include="..\Xurmo.Modules.Catalogs.Presentation\Xurmo.Modules.Catalogs.Presentation.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Database\Migrations\" />
+    <PackageReference Update="SonarAnalyzer.CSharp" Version="9.32.0.97167">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 </Project>
