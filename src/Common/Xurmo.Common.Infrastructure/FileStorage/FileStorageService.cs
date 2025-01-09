@@ -32,10 +32,7 @@ public class FileStorageService : IFileStorageService
         string path = Path.Combine(ROOTPATH, imageId);
         if (File.Exists(path))
         {
-            await Task.Run(() =>
-            {
-                File.Delete(path);
-            });
+            await Task.Run(() => File.Delete(path));
             return true;
         }
         else
