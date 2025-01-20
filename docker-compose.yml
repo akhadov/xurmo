@@ -14,6 +14,7 @@ services:
   xurmo.database:
     image: postgres:latest
     container_name: Xurmo.Database
+    hostname: xurmo.database
     environment:
       - POSTGRES_DB=xurmo
       - POSTGRES_USER=postgres
@@ -21,7 +22,7 @@ services:
     volumes:
       - ./.containers/db:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - 5434:5432
 
   xurmo.identity:
     image: quay.io/keycloak/keycloak:latest
